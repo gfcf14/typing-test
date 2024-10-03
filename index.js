@@ -1,8 +1,3 @@
-/*eslint-disable */
-import { sendMail } from 'utils/helpers';
-import { showStatsBar } from './greendream';
-import $ from 'jquery';
-
 var testStarted = false;
 var textmax = 4;
 var randText = 0;
@@ -48,7 +43,48 @@ $(function() {
 	});
 });
 
-export function startTypingTest() {
+function showStatsBar(text, error) {
+    var gradcolor1 = error ? '#aa0000' : '#007146';
+    var gradcolor2 = error ? '#ff0000' : '#00b456';
+  
+    $('#statsbar').css({background: 'linear-gradient(' + gradcolor1 + ' 35%, ' + gradcolor2 + ' 100%)'});
+    $('#statsbar').text(text);
+    $('#statsbar').css({width: '90%'});
+  
+    $('#statsbar').on('transitionend', () => {
+      if (parseInt($('#statsbar').width()) == parseInt(($(window).width() * 0.9)) && $('#statsbar').css('opacity') == '1') {
+        if ($('#statsbar').text() == 'YOU HAVE SUCCESSFULLY SIGNED IN!') $('#signinform').submit();
+        else if ($('#statsbar').text() == 'YOU HAVE SIGNED OUT SUCCESSFULLY') $('#signoutform').submit();
+        else if ($('#statsbar').text() == 'SUCCESS! USER HAS BEEN UPDATED') window.location.reload();
+        else $('#statsbar').css({opacity: 0});
+      }
+      else if (parseInt($('#statsbar').width()) == parseInt(($(window).width() * 0.9)) && $('#statsbar').css('opacity') == '0') {
+        $('#statsbar').css({width: '0px'});
+      }
+      else if (parseInt($('#statsbar').width()) == '0' && $('#statsbar').css('opacity') == '0') {
+        $('#statsbar').css({opacity: 1});
+      }
+    });
+  }
+
+// TODO: should this program become popular, enable the email functionality
+function sendMail(referer, email, message) {
+    // return axios.get(`${SERVER_ADDRESS}/email`, {
+    //   params: {
+    //     referer,
+    //     email,
+    //     message,
+    //   },
+    // }).then((response) => {
+    //   if (response.status === 200) {
+    //     return 'success';
+    //   }
+  
+    //   return response.data.text;
+    // });
+  }
+
+function startTypingTest() {
 	if (!testStarted) {
 		testStarted = true;
 		resultString = '';
@@ -109,4 +145,20 @@ function getResults() {
 	alert(resultString);
 	$('#yourtext').val(resultString);
 }
-/*eslint-enable */
+
+// TODO: should this program become popular, enable the email functionality
+function sendMail(referer, email, message) {
+    // return axios.get(`${SERVER_ADDRESS}/email`, {
+    //   params: {
+    //     referer,
+    //     email,
+    //     message,
+    //   },
+    // }).then((response) => {
+    //   if (response.status === 200) {
+    //     return 'success';
+    //   }
+  
+    //   return response.data.text;
+    // });
+  }
