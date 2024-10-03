@@ -20,7 +20,7 @@
             </div>
             <br />
             <div class='w100p'>
-              <div id='startttbtn' class='popbtn' onClick={() => startTypingTest()}>START</div>
+              <div id='startttbtn' class='popbtn' onclick="startTypingTest()">START</div>
             </div>
             <br />
             <table class='w100p tablecenter'>
@@ -34,15 +34,15 @@
               </tr>
               <tr>
                 <td class='w50p'>
-                  <div id='sampletext' class='regulartext nonselectable onlyYoverflow' style={{width: '98%', minHeight: '250px', background: '#dddddd'}} oncontextmenu='return false;'></div>
+                  <div id='sampletext' class='regulartext nonselectable onlyYoverflow' style="width: '98%'; min-height: '250px'; background: '#dddddd';" oncontextmenu="return false;"></div>
                 </td>
                 <td class='w50p'>
-                  <textarea id='yourtext' class='regulartext nonselectable' style={{width: '98%', minHeight: '250px'}} oncontextmenu='return false;'></textarea>
+                  <textarea id='yourtext' class='regulartext nonselectable' style="width: '98%'; min-height: '250px';" oncontextmenu="return false;"></textarea>
                 </td>
               </tr>
             </table>
             <br />
-            <div id='ttresult' style={{display: 'none'}} class='w100p dreamgreen regulartext'>
+            <div id='ttresult' style="display: 'none';" class='w100p dreamgreen regulartext'>
               GET YOUR RESULTS ON YOUR EMAIL!
               <br /><br />
               <div id='tterrormsg' class='errormessage formtext'>Enter a valid email</div>
